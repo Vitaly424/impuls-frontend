@@ -2,55 +2,53 @@
   <header class="header">
     <div class="container">
       <div class="header__inner">
+
         <div class="header__logo logo">
-          <a href="#">IMPULS</a>
+          <nuxt-link to="/">IMPULS</nuxt-link>
         </div>
 
         <nav class="nav">
-          <a class="nav__link m-active" href="#">Мужские</a>
-          <a class="nav__link" href="#">Женские</a>
-          <a class="nav__link" href="#">Каталог</a>
-          <a class="nav__link" href="#">Скоро в продаже</a>
-          <a class="nav__link" href="#">Новинки</a>
+          <ul class="nav__list">
+            <li class="nav__item" v-for="item in menu" :key="item.id">
+              <nuxt-link class="nav__link" exact-active-class="m-active" :to="item.path">
+                {{ item.name }}
+              </nuxt-link>
+            </li>
+          </ul>
         </nav>
+
       </div>
     </div>
   </header>
 </template>
 
-<style lang="scss">
-.header {
-  background-color: #333;
-
-  &__inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    padding: 11px 0;
-  }
-}
-
-.nav {
-  &__link {
-    border-bottom: thin solid transparent;
-    color: #e7e7e7;
-
-    &:not(:last-child) {
-      margin-right: 20px;
-    }
-
-    &.m-active {
-    }
-  }
-}
-
-.logo {
-  font-weight: 700;
-  font-size: 40px;
-
-  a {
-     color: #9b9b9b;
-  }
-}
-</style>
+<script>
+export default {
+  data() {
+    return {
+      menu: [
+        {
+          id: 1,
+          name: "Главная",
+          path: "/",
+        },
+        {
+          id: 2,
+          name: "Каталог",
+          path: "/catalog",
+        },
+        {
+          id: 3,
+          name: "Как заказать",
+          path: "/order-instruction",
+        },
+        {
+          id: 4,
+          name: "О компании",
+          path: "/about",
+        },
+      ],
+    };
+  },
+};
+</script>

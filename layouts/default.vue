@@ -2,7 +2,7 @@
   <div class="page">
     <TheHeader />
       <nuxt />
-    <TheFooter />
+    <!-- <TheFooter /> -->
   </div>
 </template>
 
